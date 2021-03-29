@@ -3,7 +3,12 @@ class SiteController{
         res.render('home');
     }
     search(req,res){
-        res.render('search');
+        if(req.method == 'GET'){
+            res.render('search');
+        } else if(req.method == 'POST'){
+            res.send('Results');
+        }
+        //res.render('search');
     }
 }
 module.exports = new SiteController;
