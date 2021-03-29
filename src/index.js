@@ -6,6 +6,10 @@ const port = 3000;
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({
+  extended: 'true'
+}));
+app.use(express.json());
 app.use(morgan('combined'))
 app.engine('hbs', handlebars({
   extname:'.hbs'
@@ -23,6 +27,10 @@ app.get('/news', (req, res) => {
 
 app.get('/search', (req, res) => {
   res.render('search');
+});
+
+app.post('/search', (req, res) => {
+  res.send('');
 });
 
 app.listen(port, () => {
