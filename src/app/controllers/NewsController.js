@@ -7,5 +7,5 @@ class NewsController {
     res.send("News Details !!!");
   }
 }
-// hello
+
 module.exports = new NewsController();
