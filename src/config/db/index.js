@@ -5,6 +5,7 @@ async function connect() {
         await mongoose.connect('mongodb://localhost/f8_education_dev', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            useCreateIndex: true,
         });
         console.log('Connect Sucessfully !!!');
     } catch (error) {

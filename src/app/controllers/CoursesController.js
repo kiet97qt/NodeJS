@@ -31,5 +31,30 @@ class CoursesController {
             .catch((err) => {});
         //res.send('Saved Sucessfully')
     }
+
+    edit(req, res, next) {
+        course
+            .findById(req.params.id)
+            .then((course) =>
+                res.render('courses/edit', {
+                    course: mongooseToObject(course),
+                }),
+            )
+            .catch(next);
+    }
+    update(req, res, next) {
+        course
+            .updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/me/stored/courses'))
+            .catch(next);
+    }
+
+    //[DELETE] /courses/:id
+    delete(req, res, next) {
+        course
+            .deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
 }
 module.exports = new CoursesController();
