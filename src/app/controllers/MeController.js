@@ -2,13 +2,14 @@ const course = require('../models/course');
 const { multipleMongooseToObject } = require('../../util/mongoose');
 class MeController {
     storedCourses(req, res, next) {
-        course
-            .find({})
-            .then((courses) =>
+        Promise.all([course.find({}), course.countDocumentsDeleted()])
+            .then(([courses, deletedcount]) => {
                 res.render('me/stored-courses', {
+                    deletedcount: deletedcount,
                     courses: multipleMongooseToObject(courses),
-                }),
-            )
+                });
+                console.log(deletedcount);
+            })
             .catch(next);
     }
     trashCourses(req, res, next) {
