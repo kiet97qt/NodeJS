@@ -23,10 +23,22 @@
             <thead>
                 <tr>
                 <th scope="col"></th>
-                <th scope="col">#</th>
-                <th scope="col">Courses Name</th>
-                <th scope="col">Level</th>
-                <th scope="col">Created Time</th>
+                <th scope="col">
+                  ID
+                  {{{sortable '_id' _sort}}}
+                  </th>
+                <th scope="col">
+                  Courses Name
+                  {{{sortable 'name' _sort}}}
+                  </th>
+                <th scope="col">
+                  Level
+                  {{{sortable 'level' _sort}}}
+                  </th>
+                <th scope="col">
+                  Created Time
+                  {{{sortable 'createdAt' _sort}}}
+                  </th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 </tr>
@@ -39,7 +51,7 @@
                       <input class="form-check-input" name="courseIds[]" type="checkbox" value="{{this._id}}">
                     </div>
                   </td>
-                  <th scope="row">{{sum @index 1}}</th>
+                  <th scope="row">{{this._id}}</th>
                   <td>{{this.name}}</td>
                   <td>{{this.level}}</td>
                   <td>{{this.createdAt}}</td>

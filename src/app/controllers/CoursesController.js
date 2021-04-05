@@ -25,7 +25,7 @@ class CoursesController {
         courseNew
             .save()
             .then(() => res.redirect('/me/stored/courses'))
-            .catch((err) => {});
+            .catch(next);
     }
 
     edit(req, res, next) {
